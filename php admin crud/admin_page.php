@@ -1,11 +1,11 @@
 <?php
 
-$mysqli = mysqli_connect('localhost:3306','root','','carts-121');
+ $mysqli = mysqli_connect('localhost:3306','root' , '', '');
 if(isset($_POST['add_Student'])){
 
    $student_name = $_POST['student_name'];
    $passport_number = $_POST['passport_number'];
-   
+
    $date_of_birth = $_POST['date_of_birth'];
    $student_email = $_POST['student_email'];
    $student_tele = $_POST['student_tele'];
@@ -32,7 +32,7 @@ if(isset($_POST['add_Student'])){
 
 
 
-   
+
    if(empty($student_name) || empty($passport_number)
        || empty($date_of_birth) || empty($student_email) || empty($student_tele)
        || empty($student_order) || empty($passport_or) || empty($passport_tr)
@@ -40,7 +40,7 @@ if(isset($_POST['add_Student'])){
       $message[] = 'please fill out all';
    }else{
       $insert = "INSERT INTO students(name, passport_number, date_of_birth, student_email, student_tele, student_order, passport_or, passport_tr,
-      certificate__or, certificate__tr, other) 
+      certificate__or, certificate__tr, other)
       VALUES('$student_name', '$passport_number', '$date_of_birth'
       , '$student_email' , '$student_tele' , '$student_order'
       , '$passport_or' , '$passport_tr' , '$certificate__or'
@@ -50,9 +50,9 @@ if(isset($_POST['add_Student'])){
        $upload = mysqli_query($mysqli,$insert);
 
        if($upload){
-         $message[] = 'new product added successfully';
+         $message[] = 'new Student added successfully';
       }else{
-         $message[] = 'could not add the product';
+         $message[] = 'could not add the Student';
       }
    }
 
@@ -87,7 +87,7 @@ if(isset($message)){
 }
 
 ?>
-   
+
 <div class="container">
 
    <div class="admin-product-form-container">
@@ -100,7 +100,7 @@ if(isset($message)){
          <input type="text" placeholder="enter phone number" name="student_tele" class="box">
          <input type="text" placeholder="enter the order" name="student_order" class="box">
 
-         
+
          <h1>original passport</h1>
          <input type="file" accept="image/png, image/jpeg, image/jpg ,image/pdf" name="passport_or" class="box">
          <h1>translation of passport</h1>
